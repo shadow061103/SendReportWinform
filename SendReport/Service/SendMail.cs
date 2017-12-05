@@ -10,16 +10,16 @@ namespace SendReport.Service
    public class SendMail
     {
         private string gmail_account = "shadow061103@gmail.com";//帳號
-        private string gmail_password = "XXXXXXXX";
+        private string gmail_password = "XXXXXXXXXX";
         private string gmail_mail = "shadow061103@gmail.com.tw";
 
         public void SendGMail(string MailBody, List<string> ToMail,List<string> attach)
         {
             //建立寄信用smtp物件 gmail
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            SmtpClient SmtpServer = new SmtpClient();
             //設定使用的Port
             SmtpServer.Port = 587;
-            
+            SmtpServer.Host = "smtp.gmail.com";
             //建立使用者憑據 要設定自己帳號
             SmtpServer.Credentials = new System.Net.NetworkCredential(gmail_account, gmail_password);
             //開啟SSL
@@ -27,7 +27,7 @@ namespace SendReport.Service
             //宣告信件內容物件
             MailMessage mail = new MailMessage();
             //設定來源信箱
-            mail.From = new MailAddress(gmail_account);
+            mail.From = new MailAddress("Service@mycard520.com.tw","MyCard");
             //設定收件者信箱
             foreach(var t in ToMail)
             {

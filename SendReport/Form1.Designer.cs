@@ -39,7 +39,6 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtUrl = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -186,7 +185,6 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtUrl;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

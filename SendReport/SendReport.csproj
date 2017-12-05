@@ -71,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ErrorService.cs" />
     <Compile Include="Service\ExcelService.cs" />
+    <Compile Include="Service\ExcelService2.cs" />
     <Compile Include="Service\SendMail.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -39,7 +39,10 @@ namespace SendReport
         }
         //發Mail
         private void btnSend_Click(object sender, EventArgs e)
-        {
+        {//http://opendata2.epa.gov.tw/UV/UV.json
+           
+
+
             lblMsg.Text = "";
             //收件人
             List<string> receiver = new List<string>();
@@ -68,8 +71,8 @@ namespace SendReport
             //附檔
             List<string> attach = new List<string>();
             attach.Add(txtFileName.Text);
+            attach.Add(Application.StartupPath + "/File/Excel.xls");
 
-            
 
             try
             {
