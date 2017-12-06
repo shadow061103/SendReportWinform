@@ -40,12 +40,11 @@ namespace SendReport
         //發Mail
         private void btnSend_Click(object sender, EventArgs e)
         {//http://opendata2.epa.gov.tw/UV/UV.json
-           
-
-
             lblMsg.Text = "";
-            //收件人
-            List<string> receiver = new List<string>();
+            List<string> receiver = new List<string>();//收件人
+            List<string> attach = new List<string>();//附檔
+
+            //處理收件人
             if (txtReceiver.Text.Length > 0)
             {
                 string[] temp = txtReceiver.Text.Replace(Environment.NewLine,",").Split(',');
@@ -68,11 +67,33 @@ namespace SendReport
                 return;
             }
 
-            //附檔
-            List<string> attach = new List<string>();
-            attach.Add(txtFileName.Text);
-            attach.Add(Application.StartupPath + "/File/Excel.xls");
+            //檢查是否有輸入json網址 有的話就去抓資料下來轉成excel
+            if (txtUrl.Text.Length > 0)
+            {
+                bool check = CheckMailFormat(@"http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?", txtUrl.Text);
+                if (check == false)
+                {
+                    lblMsg.Text = "網址格式不正確";
+                    return;
+                }
+                ExcelUrlService temp = new ExcelUrlService();
+                //產生Excel
+                try
+                {
+                    temp.GenerateExcel(txtUrl.Text);
+                }
+                catch (Exception ex)
+                {
+                    ErrorService.WriteLog("產生excel失敗" + ex.ToString());
+                    lblMsg.Text = "產生excel失敗";
+                }
+                attach.Add(Application.StartupPath + "/File/file.xls");
 
+
+            }
+            //有加附加檔案
+            if(!String.IsNullOrEmpty(txtFileName.Text))
+                attach.Add(txtFileName.Text);
 
             try
             {

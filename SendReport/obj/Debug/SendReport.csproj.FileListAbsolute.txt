@@ -18,3 +18,7 @@ D:\VisualStudio開發專案\SendReport\SendReport\bin\Debug\NPOI.xml
 D:\VisualStudio開發專案\SendReport\SendReport\bin\Debug\File\tpepark.json
 D:\VisualStudio開發專案\SendReport\SendReport\bin\Debug\EPPlus.dll
 D:\VisualStudio開發專案\SendReport\SendReport\bin\Debug\EPPlus.xml
+D:\VisualStudio開發專案\SendReport\SendReport\bin\Debug\SendReport.exe.manifest
+D:\VisualStudio開發專案\SendReport\SendReport\bin\Debug\SendReport.application
+D:\VisualStudio開發專案\SendReport\SendReport\obj\Debug\SendReport.exe.manifest
+D:\VisualStudio開發專案\SendReport\SendReport\obj\Debug\SendReport.application

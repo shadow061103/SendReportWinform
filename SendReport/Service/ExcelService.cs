@@ -18,14 +18,14 @@ using System.Drawing;
 
 namespace SendReport.Service
 {
-   public class ExcelService
+    public class ExcelService
     {
         public List<Park> CreateExcelData()
         {
             //讀json檔進來 已有檔案存在資料夾的情況
             string filepath = Path.GetDirectoryName(
                     Assembly.GetExecutingAssembly().Location);
-            string filelocate = Path.Combine(filepath+@"\File\tpepark.json");
+            string filelocate = Path.Combine(filepath + @"\File\tpepark.json");
 
             //檔案model
             List<Park> list = new List<Park>();
@@ -38,7 +38,7 @@ namespace SendReport.Service
             }
             catch (Exception ex)
             {
-                ErrorService.WriteLog("產生excel資料失敗"+ex.ToString());
+                ErrorService.WriteLog("產生excel資料失敗" + ex.ToString());
             }
             return list;
 
@@ -64,7 +64,7 @@ namespace SendReport.Service
             return column;
         }
         //NPOI
-        public void GererateExcel()
+        public void GererateExcelByNPOI()
         {
             List<Park> model = CreateExcelData();
             //Excel 2007
@@ -97,14 +97,14 @@ namespace SendReport.Service
 
         }
         //ExcelPackage
-        public void GenerateExcel2()
+        public void GenerateExcel2ByExcelPackage()
         {
             List<Park> model = CreateExcelData();
 
             ExcelPackage ep = new ExcelPackage();
             string sheetName = nameof(Park);
             ep.Workbook.Worksheets.Add(sheetName);
-            ExcelWorksheet sheet=ep.Workbook.Worksheets[sheetName];
+            ExcelWorksheet sheet = ep.Workbook.Worksheets[sheetName];
 
             //Format the header
             using (ExcelRange rng = sheet.Cells["A1:BZ1"])
@@ -135,5 +135,6 @@ namespace SendReport.Service
 
 
         }
+
     }
 }

@@ -9,9 +9,9 @@ namespace SendReport.Service
 {
    public class SendMail
     {
-        private string gmail_account = "shadow061103@gmail.com";//帳號
-        private string gmail_password = "XXXXXXXXXX";
-        private string gmail_mail = "shadow061103@gmail.com.tw";
+        private string gmail_account = Properties.Settings.Default.MailAccount;
+        private string gmail_password = Properties.Settings.Default.Mailpwd;
+        
 
         public void SendGMail(string MailBody, List<string> ToMail,List<string> attach)
         {
@@ -27,7 +27,7 @@ namespace SendReport.Service
             //宣告信件內容物件
             MailMessage mail = new MailMessage();
             //設定來源信箱
-            mail.From = new MailAddress("Service@mycard520.com.tw","MyCard");
+            mail.From = new MailAddress(gmail_account, "KuanFu");
             //設定收件者信箱
             foreach(var t in ToMail)
             {
